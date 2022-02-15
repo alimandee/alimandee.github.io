@@ -1,0 +1,26 @@
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker 
+    + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
+            <!-- handle hiro marker -->
+            <a-marker preset='hiro'>
+                <a-box position='0 0.5 0' material='opacity: 0.5; side: double;color:red;'>
+                    <!-- add a torus in a red box --> 
+                    <a-sphere color="yellow" radius="0.2" position="0 0.5 0" segments-height="53"
+                     animation__2='property: rotation; dur: 1000; from: 0 0 0;    to: 0 360 0; dir: normal;    easing: linear; loop: true;'
+                     animation__3='property:    scale; dur: 1000; from: 1 1 1;    to: 2 2 2;   dir: alternate; easing: linear; loop: true;'>
+                    </a-sphere>
+                     <a-entity id="size" position="0 0 0"
+                       animation="property: scale; to: 2 2 2; dir: alternate; loop: true"
+                       text="color: white; align: center; value: Animating size; width: 1.5">
+                     </a-entity>
+                </a-box>
+            </a-marker>
+            <!-- add a camera to the scene that renders the objects for us -->
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
