@@ -1,0 +1,39 @@
+<html>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker
+    + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
+            <a-assets>
+                <video id="Video_Asset_0" response-type="arraybuffer" autoplay="true" loop src="assets/helmet.mp4" ></video>
+              
+            </a-assets>
+           
+            <!-- handle hiro marker -->
+            <a-marker preset="hiro">
+                <a-video src="#Video_Asset_0" id="Video_0" class="intersectable" width="1" height="1" position="0 0 0" rotation="0 0 0" color="#FFFFFF" transparent=False></a-video>
+                <!-- raw.githack.com serves raw files directly from GitHub,
+                with proper Content-Type headers -->
+                <!-- first entity: reference to the above glTF model -->
+                <a-entity
+                position="0 -1 0"
+                scale="0.5 0.5 0.5"
+                gltf-model="#helmet"
+                >
+                </a-entity>
+
+ 
+
+                <!-- second entity: reference to the above audio -->
+                <a-entity sound="src: #helmet_sound; volume: 1; loop: true">
+                </a-entity>
+            </a-marker>
+
+ 
+
+            <!-- add a camera to the scene that renders the objects for us -->
+            <a-entity camera></a-entity>
+        </a-scene>
+    </body>
+</html>
